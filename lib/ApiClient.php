@@ -183,6 +183,11 @@ class ApiClient
 
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 
+        if ($this->config->getUsername()) {
+            curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+            curl_setopt($curl, CURLOPT_USERPWD, $this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+
         // disable SSL verification, if needed
         if ($this->config->getSSLVerification() == false) {
             curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
