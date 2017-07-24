@@ -13,4 +13,4 @@ matrix:
   allow_failures:
     - php: nightly
 before_install: "composer install"
-script: "phpunit test"
+script: "./vendor/bin/phpunit test"
